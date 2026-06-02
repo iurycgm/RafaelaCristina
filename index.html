@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rafaela C. | Analista de Sistemas</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0a0a0f;
+    --bg2: #111118;
+    --bg3: #18181f;
+    --line: rgba(255,255,255,0.07);
+    --line2: rgba(255,255,255,0.13);
+    --text: #f0efe8;
+    --muted: #888784;
+    --accent: #5DCAA5;
+    --accent2: #AFA9EC;
+    --accent3: #F09975;
+    --mono: 'DM Mono', monospace;
+    --serif: 'DM Serif Display', serif;
+    --sans: 'Manrope', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1rem 3rem;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(10,10,15,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--line);
+  }
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+  }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a {
+    font-size: 13px;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 8rem 3rem 5rem;
+    position: relative;
+    border-bottom: 0.5px solid var(--line);
+    overflow: hidden;
+  }
+
+  .hero-grid-bg {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+    pointer-events: none;
+  }
+
+  .hero-tag {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .hero-tag::before {
+    content: '';
+    display: inline-block;
+    width: 2rem; height: 1px;
+    background: var(--accent);
+  }
+
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent2);
+  }
+
+  .hero-sub {
+    max-width: 520px;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.75;
+    margin-top: 1.5rem;
+    font-weight: 300;
+  }
+
+  .hero-cta {
+    display: flex; gap: 1rem; margin-top: 2.5rem; flex-wrap: wrap;
+  }
+  .btn-primary {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    padding: 0.75rem 1.75rem;
+    background: var(--accent);
+    color: #04342C;
+    border: none; cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: opacity 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
+  .btn-ghost {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    padding: 0.75rem 1.75rem;
+    background: transparent;
+    color: var(--text);
+    border: 0.5px solid var(--line2);
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: border-color 0.2s, transform 0.15s;
+  }
+  .btn-ghost:hover { border-color: var(--text); transform: translateY(-1px); }
+
+  .hero-scroll {
+    position: absolute; bottom: 2.5rem; right: 3rem;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    writing-mode: vertical-rl;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .hero-scroll::after {
+    content: '';
+    display: block;
+    width: 1px; height: 3rem;
+    background: linear-gradient(to bottom, var(--muted), transparent);
+  }
+
+  /* SECTIONS */
+  section { padding: 5rem 3rem; border-bottom: 0.5px solid var(--line); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1; height: 1px;
+    background: var(--line2);
+  }
+
+  /* SOBRE */
+  .sobre-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .sobre-text h2 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 400;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+  }
+  .sobre-text p {
+    color: var(--muted);
+    font-weight: 300;
+    margin-bottom: 1rem;
+  }
+  .sobre-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--line);
+    border: 0.5px solid var(--line);
+    margin-top: 1rem;
+  }
+  .stat-box {
+    background: var(--bg);
+    padding: 1.5rem;
+  }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 2.5rem;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+  .stat-desc {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 0.5px solid var(--line);
+  }
+  .skill-card {
+    background: var(--bg);
+    padding: 2rem;
+    transition: background 0.2s;
+  }
+  .skill-card:hover { background: var(--bg3); }
+  .skill-card-icon {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent2);
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+  }
+  .skill-card h3 {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+  .skill-tags {
+    display: flex; flex-wrap: wrap; gap: 0.4rem;
+  }
+  .tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 0.3rem 0.65rem;
+    border: 0.5px solid var(--line2);
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+  .tag.accent { border-color: rgba(93,202,165,0.35); color: var(--accent); }
+  .tag.accent2 { border-color: rgba(175,169,236,0.35); color: var(--accent2); }
+  .tag.accent3 { border-color: rgba(240,153,117,0.35); color: var(--accent3); }
+
+  /* PROJETOS */
+  .projects-list { display: flex; flex-direction: column; gap: 1px; background: var(--line); border: 0.5px solid var(--line); }
+  .project-item {
+    background: var(--bg);
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    gap: 2rem;
+    align-items: center;
+    transition: background 0.2s;
+  }
+  .project-item:hover { background: var(--bg3); }
+  .project-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+  }
+  .project-info h3 {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-bottom: 0.35rem;
+  }
+  .project-info p { font-size: 13px; color: var(--muted); }
+  .project-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; justify-content: flex-end; }
+  .project-arrow {
+    font-family: var(--mono);
+    font-size: 18px;
+    color: var(--muted);
+    transition: color 0.2s, transform 0.2s;
+  }
+  .project-item:hover .project-arrow { color: var(--accent); transform: translateX(4px); }
+
+  /* CONTATO */
+  .contact-inner {
+    max-width: 640px;
+  }
+  .contact-inner h2 {
+    font-family: var(--serif);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+  .contact-inner h2 em { font-style: italic; color: var(--accent2); }
+  .contact-inner p { color: var(--muted); font-weight: 300; margin-bottom: 2rem; }
+  .contact-links { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .contact-link {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    padding: 0.65rem 1.25rem;
+    border: 0.5px solid var(--line2);
+    color: var(--text);
+    text-decoration: none;
+    display: flex; align-items: center; gap: 0.5rem;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .contact-link:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* FOOTER */
+  footer {
+    padding: 2rem 3rem;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  footer p { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.06em; }
+
+  @media (max-width: 700px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero, section, footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .sobre-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .project-item { grid-template-columns: auto 1fr; }
+    .project-tags { display: none; }
+    .hero h1 { font-size: 3rem; }
+  }
+
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">rc.dev</span>
+  <div class="nav-links">
+    <a href="#sobre">sobre</a>
+    <a href="#skills">habilidades</a>
+    <a href="#projetos">projetos</a>
+    <a href="#contato">contato</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-grid-bg"></div>
+  <p class="hero-tag">Analista de Sistemas · Graduanda em Computação</p>
+  <h1>Rafaela C.<br><em>Resolve.</em> Constrói.<br>Melhora.</h1>
+  <p class="hero-sub">
+    Perfil analítico focado em diagnósticos técnicos precisos e causa raiz.
+    Navego entre suporte especializado e desenvolvimento com naturalidade —
+    sempre entregando soluções que funcionam de verdade.
+  </p>
+  <div class="hero-cta">
+    <a href="#projetos" class="btn-primary">ver projetos</a>
+    <a href="#contato" class="btn-ghost">entrar em contato</a>
+  </div>
+  <span class="hero-scroll">scroll</span>
+</div>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <p class="section-label">01 — sobre mim</p>
+  <div class="sobre-grid">
+    <div class="sobre-text fade-in">
+      <h2>Tecnologia como <em style="font-style:italic;color:var(--accent2)">vocação</em>, não só profissão.</h2>
+      <p>Encontrei na análise de sistemas o lugar onde meu perfil investigativo e lógico fazem sentido. Gosto de entender o problema a fundo antes de propor qualquer solução — e isso me diferencia.</p>
+      <p>Alta adaptabilidade entre suporte especializado e desenvolvimento técnico. Scrum, Kanban, ERP, bancos de dados, contêineres — transito com facilidade e entrego com qualidade.</p>
+    </div>
+    <div class="fade-in">
+      <div class="sobre-stats">
+        <div class="stat-box">
+          <div class="stat-num">4+</div>
+          <div class="stat-desc">linguagens de programação</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">4</div>
+          <div class="stat-desc">bancos de dados dominados</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">ERP</div>
+          <div class="stat-desc">especialista em sistemas</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">∞</div>
+          <div class="stat-desc">curiosidade investigativa</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <p class="section-label">02 — habilidades técnicas</p>
+  <div class="skills-grid">
+    <div class="skill-card fade-in">
+      <p class="skill-card-icon">[ LINGUAGENS ]</p>
+      <h3>Programação</h3>
+      <div class="skill-tags">
+        <span class="tag accent">Java</span>
+        <span class="tag accent">Python</span>
+        <span class="tag accent">Node.js</span>
+        <span class="tag accent">C+</span>
+      </div>
+    </div>
+    <div class="skill-card fade-in">
+      <p class="skill-card-icon">[ DADOS ]</p>
+      <h3>Bancos de Dados</h3>
+      <div class="skill-tags">
+        <span class="tag accent2">PostgreSQL</span>
+        <span class="tag accent2">MySQL</span>
+        <span class="tag accent2">MongoDB</span>
+        <span class="tag accent2">SQL Server</span>
+      </div>
+    </div>
+    <div class="skill-card fade-in">
+      <p class="skill-card-icon">[ INFRA ]</p>
+      <h3>Infraestrutura</h3>
+      <div class="skill-tags">
+        <span class="tag accent3">Docker</span>
+        <span class="tag accent3">Kubernetes</span>
+        <span class="tag accent3">GitHub</span>
+        <span class="tag accent3">Jira</span>
+      </div>
+    </div>
+    <div class="skill-card fade-in">
+      <p class="skill-card-icon">[ PROCESSOS ]</p>
+      <h3>Metodologias</h3>
+      <div class="skill-tags">
+        <span class="tag">Scrum</span>
+        <span class="tag">Kanban</span>
+        <span class="tag">ERP</span>
+        <span class="tag">Gestão de Tickets</span>
+        <span class="tag">Causa Raiz</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJETOS -->
+<section id="projetos">
+  <p class="section-label">03 — projetos em destaque</p>
+  <div class="projects-list">
+
+    <!-- ✏️ SUBSTITUA CADA BLOCO ABAIXO PELO SEU PROJETO REAL -->
+
+    <div class="project-item fade-in">
+      <span class="project-num">01</span>
+      <div class="project-info">
+        <h3>Nome do Projeto 1</h3>
+        <p>Descrição breve do que o projeto faz e qual problema resolve</p>
+      </div>
+      <div class="project-tags">
+        <span class="tag accent">Tecnologia</span>
+        <span class="tag accent2">Banco de Dados</span>
+      </div>
+      <span class="project-arrow">→</span>
+    </div>
+
+    <div class="project-item fade-in">
+      <span class="project-num">02</span>
+      <div class="project-info">
+        <h3>Nome do Projeto 2</h3>
+        <p>Descrição breve do que o projeto faz e qual problema resolve</p>
+      </div>
+      <div class="project-tags">
+        <span class="tag accent">Tecnologia</span>
+        <span class="tag accent3">Ferramenta</span>
+      </div>
+      <span class="project-arrow">→</span>
+    </div>
+
+    <div class="project-item fade-in">
+      <span class="project-num">03</span>
+      <div class="project-info">
+        <h3>Nome do Projeto 3</h3>
+        <p>Descrição breve do que o projeto faz e qual problema resolve</p>
+      </div>
+      <div class="project-tags">
+        <span class="tag accent">Tecnologia</span>
+        <span class="tag accent2">Banco de Dados</span>
+      </div>
+      <span class="project-arrow">→</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato">
+  <p class="section-label">04 — contato</p>
+  <div class="contact-inner fade-in">
+    <h2>Vamos <em>conversar</em><br>sobre tecnologia?</h2>
+    <p>Aberta a oportunidades, colaborações e projetos que fazem sentido. Se você tem um problema técnico interessante, provavelmente vou querer ajudar a resolver.</p>
+    <div class="contact-links">
+      <a href="https://www.linkedin.com/in/rafaela-c-359236191/" target="_blank" class="contact-link">↗ LinkedIn</a>
+      <!-- ✏️ Troque pelo seu e-mail real -->
+      <a href="mailto:seuemail@email.com" class="contact-link">↗ E-mail</a>
+      <!-- ✏️ Troque pelo seu GitHub real -->
+      <a href="https://github.com/seuusuario" target="_blank" class="contact-link">↗ GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Rafaela C. — todos os direitos reservados</p>
+  <p>Uberlândia, MG · Brasil</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
